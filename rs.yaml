@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: stemcstudio-search
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: stemcstudio-search
+        version: "1"
+    spec:
+      containers:
+      - name: stemcstudio-search
+        image: stemcstudio-search:v1
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: stemcstudio-search-secret
+              key: username
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: stemcstudio-search-secret
+              key: password

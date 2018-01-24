@@ -15,5 +15,7 @@
 
 #
 accessKeys.csv
+aws-config.txt
 config.development.json
+secret.yaml
 stemcstudio-search
