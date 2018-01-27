@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 
@@ -27,6 +28,6 @@ func main() {
 		Addr:    "0.0.0.0:8081",
 		Handler: router,
 	}
-
-	server.ListenAndServe()
+	fmt.Printf("HTTP server listening at address %s\n", server.Addr)
+	log.Fatal(server.ListenAndServe())
 }

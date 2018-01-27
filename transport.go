@@ -42,6 +42,7 @@ func makeSearchHandlerFunc(service SearchService) http.HandlerFunc {
 			http.Error(w, "Bad request", http.StatusBadRequest)
 			return
 		}
+		fmt.Printf("Searching for %s\n", payload.Query)
 		finds, err := service.Search(payload.Query, 30)
 		if err != nil {
 			fmt.Println("err  : ", err)
